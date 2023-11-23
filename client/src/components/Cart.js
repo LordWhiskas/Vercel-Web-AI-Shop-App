@@ -1,10 +1,8 @@
-// Cart.js
 import React from 'react';
-import '../styles/Cart.css';
 
 function Cart({ cartItems, removeFromCart }) {
     const getTotalPrice = () => {
-        return cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
+        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
     };
 
     return (
@@ -13,7 +11,7 @@ function Cart({ cartItems, removeFromCart }) {
             {cartItems.length > 0 ? (
                 cartItems.map(item => (
                     <div key={item.id}>
-                        {item.name} - ${item.price}
+                        {item.name} - ${item.price} x {item.quantity}
                         <button onClick={() => removeFromCart(item.id)}>Remove</button>
                     </div>
                 ))
