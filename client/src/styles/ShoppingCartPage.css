@@ -1,0 +1,10 @@
+/* ShoppingCartPage.css */
+.shopping-cart-page {
+    padding: 2rem;
+    text-align: center;
+}
+
+.shopping-cart-page h1 {
+    color: #333;
+    margin-bottom: 2rem;
+}
