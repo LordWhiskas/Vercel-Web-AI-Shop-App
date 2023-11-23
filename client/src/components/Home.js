@@ -19,27 +19,40 @@ const fakeProductsAPI = () => {
 
 
 function Home({ addToCart }) {
+    const [filter, setFilter] = useState('All');
     const [products, setProducts] = useState([]);
+
+    const getFilteredProducts = () => {
+        return filter === 'All' ? products : products.filter(product => product.category === filter);
+    };
+
+    const handleCategoryChange = (category) => {
+        setFilter(category);
+    };
 
     useEffect(() => {
         fakeProductsAPI()
             .then((data) => {
-                // Use the data to set state, etc.
                 setProducts(data);
             })
             .catch((error) => {
-                // Maybe set an error state to display an error message, etc.
                 console.error('Error fetching products:', error);
             });
-    }, []); // Empty dependency array means this effect runs once when the component mounts
-
+    }, []);
 
 
     return (
-        <div className="product-grid">
-            {products.map(product => (
-                <ProductCard key={product.id} product={product} addToCart={addToCart} />
-            ))}
+        <div>
+            <div>
+                <button onClick={() => handleCategoryChange('All')}>All Categories</button>
+                <button onClick={() => handleCategoryChange('Watch')}>Watches</button>
+                <button onClick={() => handleCategoryChange('Shoes')}>Shoes</button>
+            </div>
+            <div className="product-grid">
+                {getFilteredProducts().map(product => (
+                    <ProductCard key={product.id} product={product} addToCart={addToCart} />
+                ))}
+            </div>
         </div>
     );
 }

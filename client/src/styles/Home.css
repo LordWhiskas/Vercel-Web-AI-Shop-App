@@ -5,6 +5,17 @@
     gap: 1em;
     padding: 1em;
 }
+button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
 
 @media (max-width: 600px) {
     .product-grid {
