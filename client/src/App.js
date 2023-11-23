@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    setProducts("lalala");
-    console.log(products)
-  }, []);
+  // const [products, setProducts] = useState([]);
+  //
+  // useEffect(() => {
+  //   setProducts("lalala");
+  //   console.log(products)
+  // }, [products]);
 
   return (
       <div className="product-grid">
