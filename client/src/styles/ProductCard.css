@@ -1,0 +1,43 @@
+/* ProductCard.css - Styles for individual product cards */
+.product-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1em;
+}
+
+.product-card h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0.5em 0;
+}
+
+.product-card p {
+    font-size: 1em;
+    color: #666;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}

@@ -1,0 +1,39 @@
+/* Cart.css - Styles for the shopping cart */
+.cart {
+    margin-top: 2em;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+}
+
+.cart h2 {
+    margin-top: 0;
+}
+
+.cart > div {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 1em;
+}
+
+button {
+    background-color: #d9534f;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c9302c;
+}
