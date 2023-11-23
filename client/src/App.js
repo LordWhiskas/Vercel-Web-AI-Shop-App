@@ -6,15 +6,15 @@ function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // TODO: Fetch products from your backend API and set products
+    setProducts("lalala");
   }, []);
 
   const [category, setCategory] = useState('all');
 
 // Add a function to update the category
-  const filterByCategory = (newCategory) => {
-    setCategory(newCategory);
-  };
+//   const filterByCategory = (newCategory) => {
+//     setCategory(newCategory);
+//   };
 
 // Adjust your useEffect to fetch products based on the selected category
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
   }, [category]);
 
 // Now, filter the products before rendering
-  const filteredProducts = category === 'all' ? products : products.filter(product => product.category === category);
+//   const filteredProducts = category === 'all' ? products : products.filter(product => product.category === category);
 
   return (
       <div className="product-grid">
