@@ -21,7 +21,7 @@ function App() {
             <div className="app">
                 <nav>
                     <Link to="/">
-                        <img src="../../public/logo192.png" alt="Logo" className="logo" />
+                        <img src="../assets/cart.png" alt="Logo" className="logo" />
                     </Link>
                     <Link to="/cart" className="cart-link">
                         Cart ({cartItems.length})
