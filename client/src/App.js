@@ -7,6 +7,7 @@ function App() {
 
   useEffect(() => {
     setProducts("lalala");
+    console.log(products)
   }, []);
 
   return (
