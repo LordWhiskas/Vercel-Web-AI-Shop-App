@@ -1,32 +1,56 @@
 // App.js
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import Home from './Home';
+import Cart from './Cart';
+import './Home.css';
+import './ProductCard.css';
+import './Cart.css';
+import './CartItem.css';
 
 function App() {
-  // const [products, setProducts] = useState([]);
-  //
-  // useEffect(() => {
-  //   setProducts("lalala");
-  //   console.log(products)
-  // }, [products]);
+    const [cartItems, setCartItems] = useState([]);
 
-  return (
-      <div className="product-grid">
-        Lalala
-        {/*{products.map((product) => (*/}
-        {/*    <div key={product.id} className="product-card">*/}
-        {/*      <img src={product.image} alt={product.name} />*/}
-        {/*      <div className="product-info">*/}
-        {/*        <h3>{product.name}</h3>*/}
-        {/*        <p>{product.description}</p>*/}
-        {/*        <p>${product.price}</p>*/}
-        {/*        /!* Add to Cart Button *!/*/}
-        {/*        <button>Add to Cart</button>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*))}*/}
-      </div>
-  );
+    const addToCart = (product) => {
+        setCartItems((prevItems) => {
+            // Check if product is already in the cart
+            const isProductInCart = prevItems.find((item) => item.id === product.id);
+
+            if (isProductInCart) {
+                // If so, increment the quantity
+                return prevItems.map((item) =>
+                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+                );
+            } else {
+                // If not, add the product to the cart with quantity 1
+                return [...prevItems, { ...product, quantity: 1 }];
+            }
+        });
+    };
+
+    const removeFromCart = (productId) => {
+        setCartItems((prevItems) =>
+            prevItems.reduce((acc, item) => {
+                if (item.id === productId) {
+                    if (item.quantity > 1) {
+                        // If the quantity is more than one, decrement it
+                        acc.push({ ...item, quantity: item.quantity - 1 });
+                    }
+                } else {
+                    // Keep the item in the cart
+                    acc.push(item);
+                }
+                return acc;
+            }, [])
+        );
+    };
+
+    return (
+        <div className="App">
+            {/* You can use React Router for routing if you have multiple pages */}
+            <Home addToCart={addToCart} />
+            <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+        </div>
+    );
 }
 
 export default App;

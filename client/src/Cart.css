@@ -1,0 +1,13 @@
+/* Cart.css */
+.cart {
+    padding: 20px;
+    margin-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.total-price {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
