@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import ShoppingCartPage from './ShoppingCartPage'; // Make sure this component is exported from its file
 import '../styles/App.css';
+import cartIcon from '../assets/cart.png';
 
 function App() {
     const [cartItems, setCartItems] = useState([]);
@@ -21,7 +22,7 @@ function App() {
             <div className="app">
                 <nav>
                     <Link to="/">
-                        <img src="../assets/cart.png" alt="Logo" className="logo" />
+                        <img src={cartIcon} alt="Logo" className="logo" />
                     </Link>
                     <Link to="/cart" className="cart-link">
                         Cart ({cartItems.length})
