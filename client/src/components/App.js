@@ -26,7 +26,7 @@ function App() {
                 },
                 body: JSON.stringify({ content: userInput }),
             });
-
+            console.log(response.json());
             return await response.json();
         } catch (error) {
             console.error("Fetching error: ", error);
