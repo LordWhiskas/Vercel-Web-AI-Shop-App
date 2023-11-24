@@ -1,4 +1,13 @@
 /* App.css - Global styles */
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #333;
+    --button-bg-color: #ffffff;
+    --button-text-color: #333;
+    --button-border-color: #ddd;
+    --spinner-color: #007bff;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -12,18 +21,18 @@ body {
     padding: 20px;
 }
 
-/* Add to App.css */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-    height: 50px; /* Adjust size as needed */
+    height: auto;
+    width: 120px;
 }
 
 .cart-link {
@@ -32,6 +41,7 @@ nav {
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .cart-link:hover {
