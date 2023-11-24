@@ -53,3 +53,23 @@ button:hover {
         flex-direction: column;
     }
 }
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Show two items per row on smaller tablets */
+        gap: 1em; /* Smaller gap on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Single column view on mobile */
+    }
+
+    button {
+        width: 100%; /* Full width button for mobile */
+        padding: 10px; /* Larger touch targets for mobile */
+        margin-right: 0; /* Remove margin */
+        margin-bottom: 1em; /* Add space between buttons */
+    }
+}

@@ -47,3 +47,30 @@ nav {
 .cart-link:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) {
+    .app {
+        padding: 10px; /* Less padding on smaller screens */
+    }
+
+    nav {
+        flex-direction: column; /* Stack nav items on top of each other */
+        padding: 0.5rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem; /* Add space between logo and nav items */
+    }
+
+    .cart-link {
+        padding: 8px 16px; /* Smaller button on mobile */
+        margin-bottom: 1rem; /* Add space between cart link and nav items */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    nav {
+        flex-direction: column;
+    }
+}
