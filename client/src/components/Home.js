@@ -19,10 +19,11 @@ function Home({ addToCart }) {
         setTimeout(() => {
             const element = document.getElementById('product-grid');
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }, 0);
     };
+
 
     const handleAddToCart = (product) => {
         addToCart(product); // Call the original addToCart function
