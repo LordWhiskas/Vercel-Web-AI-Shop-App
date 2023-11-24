@@ -4,8 +4,6 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 2em;
     padding: 1em;
-    /* Align the items in each row to stretch to the size of the tallest one */
-    align-items: start;
 }
 
 button {

@@ -1,11 +1,16 @@
 /* ProductCard.css - Styles for individual product cards */
 .product-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1em;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    /* Make sure each card can grow as needed, but not shrink, so they all take the full height */
-    flex: 1 0 auto;
-    /* Fixed or minimum height can be used if you want a specific size */
-    min-height: 320px; /* Set a min-height for all cards */
+    justify-content: space-between; /* This keeps the image at the top and the button at the bottom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 350px; /* Fixed height for all cards */
+    overflow: hidden; /* Hide overflow content */
 }
 
 .product-card:hover {
@@ -14,23 +19,20 @@
 }
 
 .product-card img {
-    width: 100%; /* Make images responsive within the card */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Cover the area without stretching the image */
+    width: 100%; /* Full width of the container */
+    max-height: 150px; /* Set a max-height for images */
+    object-fit: contain; /* Ensures that the image is fully visible */
+    margin-bottom: 1em;
+    border-radius: 4px; /* Rounded corners for the image */
+    background-color: #f8f8f8; /* Background color for transparent images */
+    display: block; /* Ensures that the image does not inline */
 }
 
 
-.product-card h3 {
-    font-size: 1.2em;
-    color: #333;
-    margin: 0.5em 0;
-    font-weight: 600; /* Slightly bolder font for the product title */
-}
-
-.product-card p {
-    font-size: 1em;
-    color: #666;
-    margin-bottom: 1.5em; /* More space above the button */
+.product-card h3, .product-card p {
+    overflow: hidden; /* Hide overflow content */
+    text-overflow: ellipsis; /* Add an ellipsis to text that overflows */
+    white-space: nowrap; /* Prevent wrapping to maintain the card layout */
 }
 
 button {
@@ -46,11 +48,4 @@ button {
 button:hover {
     background-color: #0056b3; /* A darker shade of the button color on hover */
 }
-
-@media (max-width: 768px) {
-    .product-card {
-        min-height: 220px; /* You can adjust this for smaller screens if necessary */
-    }
-}
-
 
