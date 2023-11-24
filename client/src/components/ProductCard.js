@@ -4,6 +4,7 @@ import '../styles/ProductCard.css';
 
 function ProductCard({ product, addToCart }) {
     const imageUrl = process.env.PUBLIC_URL + '/assets/' + product.image;
+    console.log(imageUrl);
     return (
         <div className="product-card">
             <img src={imageUrl} alt={product.name} />
