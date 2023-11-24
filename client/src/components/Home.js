@@ -56,17 +56,16 @@ function Home({ addToCart }) {
                     </button>
                 ))}
             </div>
-            {infoMessage && <div className="info-message">{infoMessage}</div>} {/* Display the info message */}
+            {infoMessage && <div className="info-message">{infoMessage}</div>}
             {loading ? (
                 <div className="loading-animation">
                     <div className="loading-spinner"></div>
                 </div>
             ) : (
-                <div className="product-grid">
+                // Apply the ref to the product grid container
+                <div className="product-grid" ref={ref}>
                     {getFilteredProducts().map(product => (
-                        <div ref={ref}>
-                            <ProductCard key={product.id} product={product} addToCart={handleAddToCart} />
-                        </div>
+                        <ProductCard key={product.id} product={product} addToCart={handleAddToCart} />
                     ))}
                 </div>
             )}
