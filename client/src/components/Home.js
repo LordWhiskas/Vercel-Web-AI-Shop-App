@@ -9,14 +9,14 @@ function Home({ addToCart }) {
     const [categories, setCategories] = useState([]);
     const [infoMessage, setInfoMessage] = useState(''); // State to hold the info message
 
-    const handleAddToCart = (product) => {
-        addToCart(product); // This is your existing addToCart function
-        setInfoMessage(`${product.name} has been added to your cart!`); // Set info message
-        setTimeout(() => setInfoMessage(''), 3000); // Clear the message after 3 seconds
-    };
-
     const getFilteredProducts = () => {
         return filter === 'All' ? products : products.filter(product => product.category === filter);
+    };
+
+    const handleAddToCart = (product) => {
+        addToCart(product); // Call the original addToCart function
+        setInfoMessage(`${product.name} has been added to your cart!`); // Set the informational message
+        setTimeout(() => setInfoMessage(''), 3000); // Clear the message after 3 seconds
     };
 
     const handleCategoryChange = (category) => {
@@ -52,6 +52,7 @@ function Home({ addToCart }) {
                     </button>
                 ))}
             </div>
+            {infoMessage && <div className="info-message">{infoMessage}</div>} {/* Display the info message */}
             {loading ? (
                 <div className="loading-animation">
                     <div className="loading-spinner"></div>
@@ -59,11 +60,10 @@ function Home({ addToCart }) {
             ) : (
                 <div className="product-grid">
                     {getFilteredProducts().map(product => (
-                        <ProductCard key={product.id} product={product} addToCart={addToCart} />
+                        <ProductCard key={product.id} product={product} addToCart={handleAddToCart} />
                     ))}
                 </div>
             )}
-            {infoMessage && <div className="info-message">{infoMessage}</div>}
         </div>
     );
 }
