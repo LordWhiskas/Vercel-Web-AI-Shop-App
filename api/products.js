@@ -23,19 +23,12 @@ const products = [
 ];
 */
 
-
-import express from 'express';
 import { connectToDatabase } from './db.js';
 
-export const router = express.Router();
+const productsHandler = async (req, res) => {
+    const db = await connectToDatabase();
+    const products = await db.collection('products').find().toArray();
+    res.json(products);
+};
 
-router.get('/', async (req, res) => {
-    try {
-        console.log("Fetching products...");
-        const db = await connectToDatabase();
-        const products = await db.collection('products').find().toArray();
-        res.json(products);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+export default productsHandler;

@@ -1,7 +1,7 @@
 // api/index.js
 import express from 'express';
 import cors from 'cors';
-import { router as productsRouter } from './products.js';
+import productsHandler from './products.js';
 import dotenv from 'dotenv';
 dotenv.config();
 const port = process.env.PORT || 8000
@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/products', productsRouter);
+app.use('/products', productsHandler);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
