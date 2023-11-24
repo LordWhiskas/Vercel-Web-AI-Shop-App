@@ -1,22 +1,15 @@
 import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
 
-// Global variable to store the database connection
+dotenv.config();
+
+const client = new MongoClient(process.env.MONGODB);
 let dbConnection;
 
-export default async function handler(req, res) {
+export const connectToDatabase = async () => {
     if (!dbConnection) {
-        // Create a new MongoClient only if one doesn't exist
-        const client = new MongoClient(process.env.MONGODB_URI);
         await client.connect();
-        dbConnection = client.db();
+        dbConnection = client.db('AIWebShopApp');
     }
-
-    try {
-        // Use the database connection to handle the request
-        const products = await dbConnection.collection('products').find().toArray();
-        res.status(200).json(products);
-    } catch (error) {
-        console.error('Database query error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-}
+    return dbConnection;
+};
