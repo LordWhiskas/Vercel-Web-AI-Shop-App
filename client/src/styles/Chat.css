@@ -47,7 +47,7 @@
 .message.assistant {
     align-self: flex-start;
     background-color: #f0f0f0;
-    border-bottom-left-radius: 0; /* Tail effect */
+    border-bottom-left-radius: 0;
 }
 
 .message.assistant::before { /* Tail for assistant message */
