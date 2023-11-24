@@ -11,10 +11,11 @@ button {
     background-color: #fff;
     border: 1px solid #ddd;
     cursor: pointer;
+    color: black;
 }
 
 button:hover {
-    background-color: #f0f0f0;
+    background-color: #4f72f6;
 }
 
 @media (max-width: 600px) {
