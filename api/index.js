@@ -2,7 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import productsHandler from './products.js';
-import responseHandler from './openai.js';
+import responseHandler from './openaiChat.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use('/products', productsHandler);
 
-app.use('/openai', responseHandler);
+app.use('/openaiChat', responseHandler);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)

@@ -11,15 +11,16 @@ function App() {
     const [cartItems, setCartItems] = useState([]);
     const [chatMessages, setChatMessages] = useState([]);
     const handleSendMessage = async (userInput) => {
-        let response = await fetchAssistantResponse(userInput);
-        response = response.response;
-        setChatMessages(prevMessages => [...prevMessages, { role: 'user', content: userInput }, { role: 'assistant', content: response }]);
+        const response = await fetchAssistantResponse(userInput);
+        let assistant = response.response;
+        let findCategory = response.findCategory;
+        setChatMessages(prevMessages => [...prevMessages, { role: 'user', content: userInput }, { role: 'assistant', content: assistant, findCategory: findCategory }]);
     };
 
     // Inside your component or utility function
     const fetchAssistantResponse = async (userInput) => {
         try {
-            const response = await fetch('/api/openai', {
+            const response = await fetch('/api/openaiChat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
