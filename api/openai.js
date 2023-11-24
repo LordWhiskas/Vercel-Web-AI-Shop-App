@@ -23,7 +23,7 @@ const responseHandler = async (req, res) => {
         const messages = await openai.beta.threads.messages.list(thread.id);
         const result = messages.body.data; // Get the last message
 
-        res.json(result); // Send the result back as JSON
+        res.json(run); // Send the result back as JSON
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ error: 'Error processing your request' });
