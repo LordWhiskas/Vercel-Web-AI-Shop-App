@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Chat.css';
 
-const Chat = ({ onSendMessage, messages }) => {
+const Chat = ({ onSendMessage, messages, onCategorySelect }) => {
     const [userInput, setUserInput] = useState('');
     const [isSending, setIsSending] = useState(false);
 
@@ -14,13 +14,12 @@ const Chat = ({ onSendMessage, messages }) => {
             setIsSending(true);
             await onSendMessage(userInput);
             setIsSending(false);
-            setUserInput(''); // Clear the input after sending
+            setUserInput('');
         }
     };
 
     const handleCategoryClick = (category) => {
-        console.log("Category selected:", category);
-        // Here you can handle the category selection, e.g., send a new message to the assistant
+        onCategorySelect(category);
     };
 
     return (
@@ -29,7 +28,7 @@ const Chat = ({ onSendMessage, messages }) => {
                 {messages.map((msg, index) => (
                     <div key={index} className={`message ${msg.role}`}>
                         {msg.content}
-                        {/* Check if the message has a 'findCategory' field and render buttons */}
+                        {/* Render category buttons if available */}
                         {msg.findCategory && msg.findCategory.split(', ').map((category, idx) => (
                             <button key={idx} onClick={() => handleCategoryClick(category)} className="category-button">
                                 {category}
@@ -40,12 +39,7 @@ const Chat = ({ onSendMessage, messages }) => {
                 {isSending && <div className="typing-indicator"></div>}
             </div>
             <div className="input-container">
-                <input
-                    type="text"
-                    value={userInput}
-                    onChange={handleInputChange}
-                    placeholder="Type your message here..."
-                />
+                <input type="text" value={userInput} onChange={handleInputChange} placeholder="Type your message here..." />
                 <button onClick={handleSend}>Send</button>
             </div>
         </div>

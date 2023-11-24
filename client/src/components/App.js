@@ -10,6 +10,12 @@ import Chat from './Chat';
 function App() {
     const [cartItems, setCartItems] = useState([]);
     const [chatMessages, setChatMessages] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('All');
+
+    const handleCategorySelection = (category) => {
+        setSelectedCategory(category);
+    };
+
     const handleSendMessage = async (userInput) => {
         const response = await fetchAssistantResponse(userInput);
         let assistant = response.response;
@@ -81,8 +87,8 @@ function App() {
                 </nav>
                 <Routes>
                     <Route path="/cart" element={<ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />} />
-                    <Route path="/" element={<Home addToCart={addToCart} />} />
-                    <Route path="/chat" element={<Chat onSendMessage={handleSendMessage} messages={chatMessages} />} />
+                    <Route path="/" element={<Home addToCart={addToCart} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />} />
+                    <Route path="/chat" element={<Chat onSendMessage={handleSendMessage} messages={chatMessages} onCategorySelect={handleCategorySelection} />} />
                 </Routes>
             </div>
         </BrowserRouter>

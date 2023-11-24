@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ProductCard from './ProductCard';
 import '../styles/Home.css';
-import {useRef} from 'react';
 
-function Home({ addToCart }) {
-    const [filter, setFilter] = useState('All');
+function Home({ addToCart, selectedCategory, setSelectedCategory }) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
-    const [infoMessage, setInfoMessage] = useState(''); // State to hold the info message
+    const [infoMessage, setInfoMessage] = useState('');
     const ref = useRef(null);
 
     const getFilteredProducts = () => {
-        return filter === 'All' ? products : products.filter(product => product.category === filter);
+        return selectedCategory === 'All' ? products : products.filter(product => product.category === selectedCategory);
     };
-
 
     const handleAddToCart = (product) => {
-        addToCart(product); // Call the original addToCart function
-        setInfoMessage(`${product.name} has been added to your cart!`); // Set the informational message
-        setTimeout(() => setInfoMessage(''), 3000); // Clear the message after 3 seconds
-    };
-
-    const handleCategoryChange = (category) => {
-        setFilter(category);
-        ref.current?.scrollIntoView({behavior: 'smooth'});
+        addToCart(product);
+        setInfoMessage(`${product.name} has been added to your cart!`);
+        setTimeout(() => setInfoMessage(''), 3000);
     };
 
     useEffect(() => {
@@ -34,8 +26,6 @@ function Home({ addToCart }) {
                 const data = await response.json();
                 setProducts(data);
                 setLoading(false);
-
-                // Extract categories from products
                 const uniqueCategories = new Set(data.map(product => product.category));
                 setCategories(['All', ...uniqueCategories]);
             } catch (error) {
@@ -51,7 +41,7 @@ function Home({ addToCart }) {
         <div>
             <div className="category-buttons">
                 {categories.map((category, index) => (
-                    <button key={index} onClick={() => handleCategoryChange(category)}>
+                    <button key={index} onClick={() => setSelectedCategory(category)}>
                         {category}
                     </button>
                 ))}
@@ -62,7 +52,6 @@ function Home({ addToCart }) {
                     <div className="loading-spinner"></div>
                 </div>
             ) : (
-                // Apply the ref to the product grid container
                 <div className="product-grid" ref={ref}>
                     {getFilteredProducts().map(product => (
                         <ProductCard key={product.id} product={product} addToCart={handleAddToCart} />
