@@ -11,7 +11,7 @@ const processRequest = async (prompt) => {
         const response = await openai.chat.completions.create({
             model: "gpt-4",
             messages: [{
-                role: "user", content: "Request: `" + prompt + "` Give me only products categories from this Request without additional text."
+                role: "user", content: "Request: `" + prompt + "` Give me only products categories from this Request that are the same that those categories : `Watch, Shoes, Headphones, Lamp, Wallet, Backpack` without additional text."
             }],
             temperature: 1,
             max_tokens: 256,

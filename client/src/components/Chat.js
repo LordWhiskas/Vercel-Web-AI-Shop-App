@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import '../styles/Chat.css';
+import { useNavigate } from 'react-router-dom';
 
 const Chat = ({ onSendMessage, messages, onCategorySelect }) => {
     const [userInput, setUserInput] = useState('');
     const [isSending, setIsSending] = useState(false);
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         setUserInput(e.target.value);
@@ -20,6 +22,7 @@ const Chat = ({ onSendMessage, messages, onCategorySelect }) => {
 
     const handleCategoryClick = (category) => {
         onCategorySelect(category);
+        navigate('/');
     };
 
     return (
