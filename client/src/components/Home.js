@@ -13,14 +13,21 @@ function Home({ addToCart }) {
         return filter === 'All' ? products : products.filter(product => product.category === filter);
     };
 
+    const handleCategoryChangeAndScroll = (category) => {
+        setFilter(category);
+        // Use a timeout to allow the page to re-render before scrolling
+        setTimeout(() => {
+            const element = document.getElementById('product-grid');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 0);
+    };
+
     const handleAddToCart = (product) => {
         addToCart(product); // Call the original addToCart function
         setInfoMessage(`${product.name} has been added to your cart!`); // Set the informational message
         setTimeout(() => setInfoMessage(''), 3000); // Clear the message after 3 seconds
-    };
-
-    const handleCategoryChange = (category) => {
-        setFilter(category);
     };
 
     useEffect(() => {
@@ -47,7 +54,7 @@ function Home({ addToCart }) {
         <div>
             <div className="category-buttons">
                 {categories.map((category, index) => (
-                    <button key={index} onClick={() => handleCategoryChange(category)}>
+                    <button key={index} onClick={() => handleCategoryChangeAndScroll(category)}>
                         {category}
                     </button>
                 ))}
