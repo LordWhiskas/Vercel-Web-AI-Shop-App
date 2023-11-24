@@ -3,6 +3,7 @@ import '../styles/Chat.css';
 
 const Chat = ({ onSendMessage, messages }) => {
     const [userInput, setUserInput] = useState('');
+    const [isSending, setIsSending] = useState(false);
 
     const handleInputChange = (e) => {
         setUserInput(e.target.value);
@@ -10,7 +11,9 @@ const Chat = ({ onSendMessage, messages }) => {
 
     const handleSend = async () => {
         if (userInput.trim()) {
+            setIsSending(true);
             await onSendMessage(userInput);
+            setIsSending(false);
             setUserInput(''); // Clear the input after sending
         }
     };
@@ -23,6 +26,7 @@ const Chat = ({ onSendMessage, messages }) => {
                         {msg.content}
                     </div>
                 ))}
+                {isSending && <div className="typing-indicator"></div>}
             </div>
             <div className="input-container">
                 <input
