@@ -130,23 +130,3 @@
     75% { transform: translateY(5px); }
     100% { transform: translateY(0); }
 }
-
-/* Additional styles for category buttons */
-.category-buttons-container {
-    margin-top: 10px;
-}
-
-.category-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.category-button:hover {
-    background-color: #0056b3;
-}
