@@ -22,6 +22,7 @@ const products = [
 ];
 
 
-module.exports = (req, res) => {
+export default async function handler(req, res) {
+    // Your logic here
     res.json(products);
-};
+}
