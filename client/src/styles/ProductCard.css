@@ -1,43 +1,53 @@
 /* ProductCard.css - Styles for individual product cards */
 .product-card {
     background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid #e0e0e0; /* Lighter border color for subtlety */
+    border-radius: 8px; /* Increased border radius for a modern look */
     padding: 1em;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Slight raise on hover for interactive feel */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for emphasis */
 }
 
 .product-card img {
     max-width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain; /* Changed to 'contain' to ensure the image is fully visible */
     margin-bottom: 1em;
+    border-radius: 4px; /* Slight rounding at the top of images */
 }
 
 .product-card h3 {
     font-size: 1.2em;
     color: #333;
     margin: 0.5em 0;
+    font-weight: 600; /* Slightly bolder font for the product title */
 }
 
 .product-card p {
     font-size: 1em;
     color: #666;
+    margin-bottom: 1.5em; /* More space above the button */
 }
 
 button {
-    background-color: #5cb85c;
+    background-color: #007bff; /* Using a primary color for the button */
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 1em;
+    transition: background-color 0.3s ease; /* Transition for the button hover */
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: #0056b3; /* A darker shade of the button color on hover */
 }
