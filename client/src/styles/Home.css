@@ -59,6 +59,11 @@ button:hover {
         grid-template-columns: repeat(2, 1fr); /* Show two items per row on smaller tablets */
         gap: 1em; /* Smaller gap on smaller screens */
     }
+    .info-message {
+        padding: 5px 10px; /* Padding for content */
+        font-size: 14px;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -72,6 +77,7 @@ button:hover {
         margin-right: 0; /* Remove margin */
         margin-bottom: 1em; /* Add space between buttons */
     }
+
 }
 
 /* ... (existing styles) */
