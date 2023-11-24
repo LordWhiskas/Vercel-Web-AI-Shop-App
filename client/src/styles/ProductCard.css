@@ -33,6 +33,7 @@
     color: #333;
     margin: 0.5em 0;
     font-weight: 600; /* Slightly bolder font for the product title */
+    max-height: 22px;
     overflow: hidden;
 }
 
