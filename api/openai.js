@@ -21,7 +21,7 @@ const responseHandler = async (req, res) => {
         const getRunResult = async (threadId, runId) => {
             const result = await openai.beta.threads.runs.retrieve(threadId, runId);
             if (result.status === 'completed') {
-                return result;
+                return openai.beta.threads.messages.list(threadId);
             } else {
                 // Delay the next call by a certain amount of time (e.g., 500ms)
                 await new Promise(resolve => setTimeout(resolve, 500));
@@ -31,10 +31,12 @@ const responseHandler = async (req, res) => {
 
         const completedRun = await getRunResult(thread.id, run.id);
 
-        // Assuming the last message in the thread is the assistant's response
-        const assistantMessage = completedRun.messages[completedRun.messages.length - 1];
+        console.log(completedRun.body.data[0].content[0].text.value);
 
-        res.json({ response: assistantMessage.content.text });
+        // Assuming the last message in the thread is the assistant's response
+        const assistantMessage = completedRun.body.data[0].content[0].text.value;
+
+        res.json({ response: assistantMessage });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ error: 'Error processing your request' });

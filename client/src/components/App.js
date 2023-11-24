@@ -26,6 +26,7 @@ function App() {
                 },
                 body: JSON.stringify({ content: userInput }),
             });
+            console.log(JSON.stringify({ content: userInput }));
             let result = await response.json();
             console.log(result);
             return result;
