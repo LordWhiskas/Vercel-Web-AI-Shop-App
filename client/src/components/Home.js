@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import '../styles/Home.css';
+import {useRef} from 'react';
 
 function Home({ addToCart }) {
     const [filter, setFilter] = useState('All');
@@ -8,20 +9,10 @@ function Home({ addToCart }) {
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     const [infoMessage, setInfoMessage] = useState(''); // State to hold the info message
+    const ref = useRef(null);
 
     const getFilteredProducts = () => {
         return filter === 'All' ? products : products.filter(product => product.category === filter);
-    };
-
-    const handleCategoryChangeAndScroll = (category) => {
-        setFilter(category);
-        // Use a timeout to allow the page to re-render before scrolling
-        setTimeout(() => {
-            const element = document.getElementById('product-grid');
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }, 0);
     };
 
 
@@ -29,6 +20,11 @@ function Home({ addToCart }) {
         addToCart(product); // Call the original addToCart function
         setInfoMessage(`${product.name} has been added to your cart!`); // Set the informational message
         setTimeout(() => setInfoMessage(''), 3000); // Clear the message after 3 seconds
+    };
+
+    const handleCategoryChange = (category) => {
+        setFilter(category);
+        ref.current?.scrollIntoView({behavior: 'smooth'});
     };
 
     useEffect(() => {
@@ -55,7 +51,7 @@ function Home({ addToCart }) {
         <div>
             <div className="category-buttons">
                 {categories.map((category, index) => (
-                    <button key={index} onClick={() => handleCategoryChangeAndScroll(category)}>
+                    <button key={index} onClick={() => handleCategoryChange(category)}>
                         {category}
                     </button>
                 ))}
@@ -68,7 +64,9 @@ function Home({ addToCart }) {
             ) : (
                 <div className="product-grid">
                     {getFilteredProducts().map(product => (
-                        <ProductCard key={product.id} product={product} addToCart={handleAddToCart} />
+                        <div ref={ref}>
+                            <ProductCard key={product.id} product={product} addToCart={handleAddToCart} />
+                        </div>
                     ))}
                 </div>
             )}
