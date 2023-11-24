@@ -1,15 +1,11 @@
 /* ProductCard.css - Styles for individual product cards */
 .product-card {
-    background: #ffffff;
-    border: 1px solid #e0e0e0; /* Lighter border color for subtlety */
-    border-radius: 8px; /* Increased border radius for a modern look */
-    padding: 1em;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effects */
+    /* Make sure each card can grow as needed, but not shrink, so they all take the full height */
+    flex: 1 0 auto;
+    /* Fixed or minimum height can be used if you want a specific size */
+    min-height: 320px; /* Set a min-height for all cards */
 }
 
 .product-card:hover {
@@ -18,13 +14,9 @@
 }
 
 .product-card img {
-    width: 100%; /* Full width of the container */
-    height: 200px; /* Fixed height for all images */
-    object-fit: contain; /* Ensures that the image is fully visible */
-    margin-bottom: 1em;
-    border-radius: 4px; /* Rounded corners for the image */
-    background-color: #f8f8f8; /* Background color for transparent images */
-    display: block; /* Ensures that the image does not inline */
+    width: 100%; /* Make images responsive within the card */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area without stretching the image */
 }
 
 
@@ -54,4 +46,11 @@ button {
 button:hover {
     background-color: #0056b3; /* A darker shade of the button color on hover */
 }
+
+@media (max-width: 768px) {
+    .product-card {
+        min-height: 220px; /* You can adjust this for smaller screens if necessary */
+    }
+}
+
 
