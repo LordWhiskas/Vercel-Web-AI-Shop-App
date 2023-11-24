@@ -21,7 +21,7 @@ const responseHandler = async (req, res) => {
         // Consider a non-blocking approach instead of while loop here
 
         const messages = await openai.beta.threads.messages.list(thread.id);
-        const result = messages.body.data[0]; // Get the last message
+        const result = messages.body.data; // Get the last message
 
         res.json(result); // Send the result back as JSON
     } catch (error) {
