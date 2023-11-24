@@ -18,12 +18,15 @@
 }
 
 .product-card img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain; /* Changed to 'contain' to ensure the image is fully visible */
+    width: 100%; /* Full width of the container */
+    height: 200px; /* Fixed height for all images */
+    object-fit: contain; /* Ensures that the image is fully visible */
     margin-bottom: 1em;
-    border-radius: 4px; /* Slight rounding at the top of images */
+    border-radius: 4px; /* Rounded corners for the image */
+    background-color: #f8f8f8; /* Background color for transparent images */
+    display: block; /* Ensures that the image does not inline */
 }
+
 
 .product-card h3 {
     font-size: 1.2em;
