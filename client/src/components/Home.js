@@ -40,13 +40,25 @@ function Home({ addToCart }) {
             });
     }, []);
 
-
     return (
         <div>
             <div>
                 <button onClick={() => handleCategoryChange('All')}>All Categories</button>
                 <button onClick={() => handleCategoryChange('Watch')}>Watches</button>
                 <button onClick={() => handleCategoryChange('Shoes')}>Shoes</button>
+                <button onClick={() => handleCategoryChange('Headphones')}>Headphones</button>
+                <button onClick={() => handleCategoryChange('Lamp')}>Lamp</button>
+                <button onClick={() => handleCategoryChange('Wallet')}>Wallet</button>
+                <button onClick={() => handleCategoryChange('Backpack')}>Backpack</button>
+                <button onClick={() => handleCategoryChange('Bottle')}>Bottle</button>
+                <button onClick={() => handleCategoryChange('Mat')}>Mat</button>
+                <button onClick={() => handleCategoryChange('Mouse')}>Mouse</button>
+                <button onClick={() => handleCategoryChange('Jacket')}>Jacket</button>
+                <button onClick={() => handleCategoryChange('T-Shirt')}>T-Shirt</button>
+                <button onClick={() => handleCategoryChange('Sunglasses')}>Sunglasses</button>
+                <button onClick={() => handleCategoryChange('Hat')}>Hat</button>
+                <button onClick={() => handleCategoryChange('Wristband')}>Wristband</button>
+                <button onClick={() => handleCategoryChange('Socks')}>Socks</button>
             </div>
             <div className="product-grid">
                 {getFilteredProducts().map(product => (
