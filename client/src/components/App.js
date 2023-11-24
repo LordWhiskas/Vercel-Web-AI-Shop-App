@@ -1,13 +1,38 @@
 // App.js
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 import Home from './Home';
 import ShoppingCartPage from './ShoppingCartPage'; // Make sure this component is exported from its file
 import '../styles/App.css';
 import cartIcon from '../assets/cart.png';
+import Chat from './Chat';
 
 function App() {
     const [cartItems, setCartItems] = useState([]);
+    const [chatMessages, setChatMessages] = useState([]);
+    const handleSendMessage = async (userInput) => {
+        let response = await fetchAssistantResponse(userInput);
+        response = response.assistantResponse;
+        setChatMessages(prevMessages => [...prevMessages, { role: 'user', content: userInput }, { role: 'assistant', content: response }]);
+    };
+
+    // Inside your component or utility function
+    const fetchAssistantResponse = async (userInput) => {
+        try {
+            const response = await fetch('/api/openai', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ content: userInput }),
+            });
+
+            return await response.json();
+        } catch (error) {
+            console.error("Fetching error: ", error);
+        }
+    };
+
 
     const addToCart = (product) => {
         // Check if the product is already in the cart
@@ -47,10 +72,15 @@ function App() {
                     <Link to="/cart" className="cart-link">
                         Cart ({cartItems.length})
                     </Link>
+                    <Link to="/chat" className="chat-link">
+                        Chat with Assistant
+                    </Link>
                 </nav>
                 <Routes>
                     <Route path="/cart" element={<ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />} />
                     <Route path="/" element={<Home addToCart={addToCart} />} />
+                    {console.log(chatMessages)}
+                    <Route path="/chat" element={<Chat onSendMessage={handleSendMessage} messages={chatMessages} />} />
                 </Routes>
             </div>
         </BrowserRouter>
