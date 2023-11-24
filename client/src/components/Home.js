@@ -1,13 +1,12 @@
-// Home.js
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import '../styles/Home.css';
-
 
 function Home({ addToCart }) {
     const [filter, setFilter] = useState('All');
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [categories, setCategories] = useState([]);
 
     const getFilteredProducts = () => {
         return filter === 'All' ? products : products.filter(product => product.category === filter);
@@ -22,12 +21,15 @@ function Home({ addToCart }) {
             try {
                 const response = await fetch('/api/products');
                 const data = await response.json();
-                console.log(data);
                 setProducts(data);
-                setLoading(false); // Update loading state when data is fetched
+                setLoading(false);
+
+                // Extract categories from products
+                const uniqueCategories = new Set(data.map(product => product.category));
+                setCategories(['All', ...uniqueCategories]);
             } catch (error) {
                 console.error(error);
-                setLoading(false); // Handle errors and update loading state
+                setLoading(false);
             }
         };
 
@@ -36,25 +38,14 @@ function Home({ addToCart }) {
 
     return (
         <div>
-            <div>
-                <button onClick={() => handleCategoryChange('All')}>All Categories</button>
-                <button onClick={() => handleCategoryChange('Watch')}>Watches</button>
-                <button onClick={() => handleCategoryChange('Shoes')}>Shoes</button>
-                <button onClick={() => handleCategoryChange('Headphones')}>Headphones</button>
-                <button onClick={() => handleCategoryChange('Lamp')}>Lamp</button>
-                <button onClick={() => handleCategoryChange('Wallet')}>Wallet</button>
-                <button onClick={() => handleCategoryChange('Backpack')}>Backpack</button>
-                <button onClick={() => handleCategoryChange('Bottle')}>Bottle</button>
-                <button onClick={() => handleCategoryChange('Mat')}>Mat</button>
-                <button onClick={() => handleCategoryChange('Mouse')}>Mouse</button>
-                <button onClick={() => handleCategoryChange('Jacket')}>Jacket</button>
-                <button onClick={() => handleCategoryChange('T-Shirt')}>T-Shirt</button>
-                <button onClick={() => handleCategoryChange('Sunglasses')}>Sunglasses</button>
-                <button onClick={() => handleCategoryChange('Hat')}>Hat</button>
-                <button onClick={() => handleCategoryChange('Wristband')}>Wristband</button>
-                <button onClick={() => handleCategoryChange('Socks')}>Socks</button>
+            <div className="category-buttons">
+                {categories.map((category, index) => (
+                    <button key={index} onClick={() => handleCategoryChange(category)}>
+                        {category}
+                    </button>
+                ))}
             </div>
-            {loading ? ( // Conditionally render loading animation
+            {loading ? (
                 <div className="loading-animation">
                     <div className="loading-spinner"></div>
                 </div>
