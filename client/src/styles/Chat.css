@@ -1,68 +1,107 @@
 .chat-container {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    margin: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
+    max-width: 600px; /* Increase width for better readability */
+    margin: 20px auto; /* Add more margin to center the chat on the page */
+    border: 1px solid #ddd; /* Lighter border for a subtler look */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background-color: #fff; /* White background for the chat container */
+    border-radius: 8px; /* Rounded corners */
 }
 
 .messages-container {
     flex-grow: 1;
     overflow: auto;
+    padding: 10px; /* Padding inside the messages container */
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+    gap: 10px; /* Space between messages */
 }
 
 .message {
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
+    max-width: 80%; /* Max width for message bubbles */
+    word-wrap: break-word; /* Ensure long words do not overflow */
+    line-height: 1.4; /* Improved line-height for readability */
+    position: relative; /* For positioning the pseudo-elements for tails */
+    padding: 12px 15px; /* Increase padding for a better look */
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); /* Subtle shadow for the bubbles */
 }
 
 .message.user {
     align-self: flex-end;
-    background-color: #e0e0e0;
+    background-color: #007bff; /* Brand color for the user messages */
+    color: white; /* White text for contrast */
+    border-bottom-right-radius: 0; /* Tail effect */
+}
+
+.message.user::before { /* Tail for user message */
+    content: '';
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #007bff;
 }
 
 .message.assistant {
     align-self: flex-start;
     background-color: #f0f0f0;
+    border-bottom-left-radius: 0; /* Tail effect */
+}
+
+.message.assistant::before { /* Tail for assistant message */
+    content: '';
+    position: absolute;
+    left: -10px;
+    bottom: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #f0f0f0 transparent transparent;
 }
 
 .input-container {
     display: flex;
+    border-top: 1px solid #ddd; /* Separator for the input area */
+    padding: 10px; /* Padding around the input area */
 }
 
 .input-container input {
     flex-grow: 1;
     padding: 10px;
     margin-right: 5px;
+    border: 1px solid #ddd; /* Lighter border for the input */
+    border-radius: 4px; /* Rounded corners for the input */
 }
 
 .input-container button {
-    padding: 10px;
+    padding: 10px 15px; /* Slightly more horizontal padding for the button */
+    background-color: #007bff; /* Brand color for the send button */
+    color: white; /* White text for the send button */
+    border: none;
+    border-radius: 4px; /* Rounded corners for the send button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+.input-container button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Add styling for the typing indicator */
 .typing-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 30px;
+    color: #aaa; /* Light color for the typing indicator text */
+    font-style: italic; /* Italicize the typing indicator text */
+    padding-left: 10px; /* Spacing before the typing dots */
 }
 
-.typing-indicator::before {
-    content: '';
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 3px;
-    animation: typingAnimation 1.5s infinite;
-}
+/* Add responsive design for smaller screens */
+@media (max-width: 768px) {
+    .chat-container {
+        width: 90%; /* Full-width on smaller screens for more space */
+    }
 
-@keyframes typingAnimation {
-    0% { transform: translateY(0); }
-    25% { transform: translateY(-5px); }
-    50% { transform: translateY(0); }
-    75% { transform: translateY(5px); }
-    100% { transform: translateY(0); }
+    .message {
+        max-width: 75%; /* Slightly more width for messages on small screens */
+    }
 }

@@ -37,20 +37,35 @@ nav {
 }
 
 .cart-link {
-    display: inline-block; /* Allows padding and other box model properties */
-    padding: 10px 15px; /* Button-like padding */
-    background-color: #007bff; /* Button color */
-    color: white; /* Text color */
-    border-radius: 20px; /* Rounded corners for a modern look */
-    text-align: center; /* Center the text inside the link */
-    text-decoration: none; /* Remove the underline from the link */
-    transition: background-color 0.3s ease; /* Smooth transition for hover state */
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    /* other styles */
 }
 
 .cart-link:hover {
     background-color: #0056b3; /* Darker shade on hover for interactivity */
     text-decoration: none; /* Ensures underline does not reappear on hover */
     color: white; /* Ensuring text color stays the same on hover */
+}
+
+.chat-link {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Same padding as cart button */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Allow padding */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+    /* Add any other styles to match the cart button */
+}
+
+.chat-link:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    text-decoration: none; /* No underline on hover */
 }
 
 @media (max-width: 768px) {
