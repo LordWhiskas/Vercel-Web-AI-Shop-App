@@ -32,11 +32,16 @@ const Chat = ({ onSendMessage, messages, onCategorySelect }) => {
                     <div key={index} className={`message ${msg.role}`}>
                         {msg.content}
                         {/* Render category buttons if available */}
-                        {msg.findCategory && msg.findCategory.split(', ').map((category, idx) => (
-                            <button key={idx} onClick={() => handleCategoryClick(category)} className="category-button">
-                                {category}
-                            </button>
-                        ))}
+                        {msg.findCategory && (
+                            <div className="category-buttons-container">
+                                {msg.findCategory.split(', ').map((category, idx) => (
+                                    <button key={idx} onClick={() => handleCategoryClick(category)} className="category-button">
+                                        {category}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+
                     </div>
                 ))}
                 {isSending && <div className="typing-indicator"></div>}
