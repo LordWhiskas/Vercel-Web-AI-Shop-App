@@ -26,8 +26,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: var(--primary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Clean white background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Softer shadow for a lighter effect */
 }
 
 .logo {
@@ -38,14 +38,15 @@ nav {
 .cart-link {
     background-color: #007bff;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 10px 15px; /* Slightly reduced padding for a sleeker look */
+    border-radius: 20px; /* Rounded borders for a modern pill shape */
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .cart-link:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Slight scale for interactive feedback */
 }
 
 @media (max-width: 768px) {
