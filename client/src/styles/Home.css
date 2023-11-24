@@ -73,3 +73,23 @@ button:hover {
         margin-bottom: 1em; /* Add space between buttons */
     }
 }
+
+.info-message {
+    position: fixed; /* Fixed at the top */
+    top: 20px; /* Give some space from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Align center */
+    background-color: #f8f8f8; /* Light background */
+    border: 1px solid #ddd; /* Subtle border */
+    padding: 10px 20px; /* Padding for content */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Soft shadow for floating effect */
+    z-index: 1000; /* Ensure it's above other content */
+    animation: fadeInOut 3s ease-in-out; /* Fading animation */
+}
+
+/* Keyframes for the fading animation */
+@keyframes fadeInOut {
+    0%, to { opacity: 0; }
+    15%, 85% { opacity: 1; }
+}

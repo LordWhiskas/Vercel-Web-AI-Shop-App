@@ -7,6 +7,13 @@ function Home({ addToCart }) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
+    const [infoMessage, setInfoMessage] = useState(''); // State to hold the info message
+
+    const handleAddToCart = (product) => {
+        addToCart(product); // This is your existing addToCart function
+        setInfoMessage(`${product.name} has been added to your cart!`); // Set info message
+        setTimeout(() => setInfoMessage(''), 3000); // Clear the message after 3 seconds
+    };
 
     const getFilteredProducts = () => {
         return filter === 'All' ? products : products.filter(product => product.category === filter);
@@ -56,6 +63,7 @@ function Home({ addToCart }) {
                     ))}
                 </div>
             )}
+            {infoMessage && <div className="info-message">{infoMessage}</div>}
         </div>
     );
 }
