@@ -81,7 +81,7 @@ function App() {
                 <Routes>
                     <Route path="/cart" element={<ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />} />
                     <Route path="/" element={<Home addToCart={addToCart} />} />
-                    {console.log(chatMessages)}
+
                     <Route path="/chat" element={<Chat onSendMessage={handleSendMessage} messages={chatMessages} />} />
                 </Routes>
             </div>
