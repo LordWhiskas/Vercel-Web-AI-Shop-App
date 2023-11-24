@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/ProductCard.css';
 
 function ProductCard({ product, addToCart }) {
-    const imageUrl = require(`../assets/${product.image}`).default;
+    const imageUrl = process.env.PUBLIC_URL + '/assets/' + product.image;
     return (
         <div className="product-card">
             <img src={imageUrl} alt={product.name} />
