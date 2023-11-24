@@ -12,7 +12,7 @@ function App() {
     const [chatMessages, setChatMessages] = useState([]);
     const handleSendMessage = async (userInput) => {
         let response = await fetchAssistantResponse(userInput);
-        response = response.assistantResponse;
+        response = response.response;
         setChatMessages(prevMessages => [...prevMessages, { role: 'user', content: userInput }, { role: 'assistant', content: response }]);
     };
 
