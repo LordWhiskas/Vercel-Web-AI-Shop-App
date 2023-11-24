@@ -18,6 +18,27 @@ button:hover {
     background-color: #4f72f6;
 }
 
+.loading-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Adjust the height as needed */
+}
+
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #007bff; /* You can change the loading spinner color */
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite; /* Use the "spin" animation */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 @media (max-width: 600px) {
     .product-grid {
         grid-template-columns: 1fr;

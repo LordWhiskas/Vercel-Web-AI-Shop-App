@@ -7,6 +7,7 @@ import '../styles/Home.css';
 function Home({ addToCart }) {
     const [filter, setFilter] = useState('All');
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const getFilteredProducts = () => {
         return filter === 'All' ? products : products.filter(product => product.category === filter);
@@ -18,10 +19,16 @@ function Home({ addToCart }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('/api/products');
-            const data = await response.json();
-            console.log(data);
-            setProducts(data);
+            try {
+                const response = await fetch('/api/products');
+                const data = await response.json();
+                console.log(data);
+                setProducts(data);
+                setLoading(false); // Update loading state when data is fetched
+            } catch (error) {
+                console.error(error);
+                setLoading(false); // Handle errors and update loading state
+            }
         };
 
         fetchData().catch(console.error);
@@ -47,11 +54,17 @@ function Home({ addToCart }) {
                 <button onClick={() => handleCategoryChange('Wristband')}>Wristband</button>
                 <button onClick={() => handleCategoryChange('Socks')}>Socks</button>
             </div>
-            <div className="product-grid">
-                {getFilteredProducts().map(product => (
-                    <ProductCard key={product.id} product={product} addToCart={addToCart} />
-                ))}
-            </div>
+            {loading ? ( // Conditionally render loading animation
+                <div className="loading-animation">
+                    <div className="loading-spinner"></div>
+                </div>
+            ) : (
+                <div className="product-grid">
+                    {getFilteredProducts().map(product => (
+                        <ProductCard key={product.id} product={product} addToCart={addToCart} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
