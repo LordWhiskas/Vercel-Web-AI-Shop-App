@@ -30,8 +30,12 @@ import { connectToDatabase } from './db.js';
 export const router = express.Router();
 
 router.get('/', async (req, res) => {
-    console.log("we are here");
-    const db = await connectToDatabase();
-    const products = await db.collection('products').find().toArray();
-    res.json(products);
+    try {
+        console.log("Fetching products...");
+        const db = await connectToDatabase();
+        const products = await db.collection('products').find().toArray();
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
