@@ -1,3 +1,4 @@
+/*
 const products = [
     { id: 1, name: 'Classic Watch', price: 79.99, image: '/images/classic-watch.jpg', category:"Watch" },
     { id: 2, name: 'Running Sneakers', price: 59.99, image: '/images/running-sneakers.jpg', category:"Shoes" },
@@ -20,9 +21,16 @@ const products = [
     { id: 19, name: 'Beanie', price: 12.99, image: '/images/beanie.jpg', category: "Hat" },
     { id: 20, name: 'Ankle Socks', price: 14.99, image: '/images/socks.jpg', category: "Socks" }
 ];
+*/
 
 
-export default async function handler(req, res) {
-    // Your logic here
+import express from 'express';
+import { connectToDatabase } from './db.js';
+
+export const router = express.Router();
+
+router.get('/', async (req, res) => {
+    const db = await connectToDatabase();
+    const products = await db.collection('products').find().toArray();
     res.json(products);
-}
+});

@@ -3,20 +3,6 @@ import React, {useEffect, useState} from 'react';
 import ProductCard from './ProductCard';
 import '../styles/Home.css';
 
-const fakeProductsAPI = () => {
-    return fetch('api/products') // Return the promise that `fetch` returns
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            throw error; // Re-throw the error for the caller to handle if needed
-        });
-};
-
 
 function Home({ addToCart }) {
     const [filter, setFilter] = useState('All');
@@ -31,13 +17,14 @@ function Home({ addToCart }) {
     };
 
     useEffect(() => {
-        fakeProductsAPI()
-            .then((data) => {
-                setProducts(data);
-            })
-            .catch((error) => {
-                console.error('Error fetching products:', error);
-            });
+        const fetchData = async () => {
+            const response = await fetch('/api/products');
+            const data = await response.json();
+            console.log(data);
+            setProducts(data);
+        };
+
+        fetchData().catch(console.error);
     }, []);
 
     return (
