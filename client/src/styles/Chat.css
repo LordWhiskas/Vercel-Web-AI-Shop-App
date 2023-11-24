@@ -105,3 +105,28 @@
         max-width: 75%; /* Slightly more width for messages on small screens */
     }
 }
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+}
+
+.typing-indicator::before {
+    content: '';
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 3px;
+    animation: typingAnimation 1.5s infinite;
+}
+
+@keyframes typingAnimation {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}
