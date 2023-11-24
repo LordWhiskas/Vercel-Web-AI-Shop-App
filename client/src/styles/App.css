@@ -28,6 +28,7 @@ nav {
     padding: 1rem;
     background-color: #fff; /* Clean white background */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Softer shadow for a lighter effect */
+    margin-bottom: 1rem
 }
 
 .logo {
@@ -36,17 +37,20 @@ nav {
 }
 
 .cart-link {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px; /* Slightly reduced padding for a sleeker look */
-    border-radius: 20px; /* Rounded borders for a modern pill shape */
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Allows padding and other box model properties */
+    padding: 10px 15px; /* Button-like padding */
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    border-radius: 20px; /* Rounded corners for a modern look */
+    text-align: center; /* Center the text inside the link */
+    text-decoration: none; /* Remove the underline from the link */
+    transition: background-color 0.3s ease; /* Smooth transition for hover state */
 }
 
 .cart-link:hover {
-    background-color: #0056b3;
-    transform: scale(1.05); /* Slight scale for interactive feedback */
+    background-color: #0056b3; /* Darker shade on hover for interactivity */
+    text-decoration: none; /* Ensures underline does not reappear on hover */
+    color: white; /* Ensuring text color stays the same on hover */
 }
 
 @media (max-width: 768px) {
