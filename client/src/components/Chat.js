@@ -7,10 +7,12 @@ const Chat = ({ onSendMessage, messages, onCategorySelect }) => {
     const [isSending, setIsSending] = useState(false);
     const navigate = useNavigate();
 
+    // Handling input from User
     const handleInputChange = (e) => {
         setUserInput(e.target.value);
     };
 
+    // Processing send button
     const handleSend = async () => {
         if (userInput.trim()) {
             setIsSending(true);
@@ -20,6 +22,7 @@ const Chat = ({ onSendMessage, messages, onCategorySelect }) => {
         }
     };
 
+    // Filtering Categories
     const handleCategoryClick = (category) => {
         onCategorySelect(category);
         navigate('/');
