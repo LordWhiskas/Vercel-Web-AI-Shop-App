@@ -1,5 +1,10 @@
 # Server Documentation
 
+## API Endpoints
+
+- `GET /api/products`: Fetches and returns the list of products.
+- `GET /api/openaiChat`: Endpoint for interacting with the chatbot.
+
 ### `index.js`
 
 The central server file configures the Express app, applies middleware for CORS and JSON handling, and binds routes to their handlers.
