@@ -1,8 +1,7 @@
-// App.js
 import React, {useState} from 'react';
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 import Home from './Home';
-import ShoppingCartPage from './ShoppingCartPage'; // Make sure this component is exported from its file
+import ShoppingCartPage from './ShoppingCartPage';
 import '../styles/App.css';
 import cartIcon from '../assets/cart.png';
 import Chat from './Chat';
@@ -16,6 +15,7 @@ function App() {
         setSelectedCategory(category);
     };
 
+    // set messages for Chat.js module
     const handleSendMessage = async (userInput) => {
         const response = await fetchAssistantResponse(userInput);
         let assistant = response.response;
@@ -23,7 +23,7 @@ function App() {
         setChatMessages(prevMessages => [...prevMessages, { role: 'user', content: userInput }, { role: 'assistant', content: assistant, findCategory: findCategory }]);
     };
 
-    // Inside your component or utility function
+    // fetching response from assistant
     const fetchAssistantResponse = async (userInput) => {
         try {
             const response = await fetch('/api/openaiChat', {
