@@ -43,7 +43,7 @@ npm run dev
 ```
 [API Documentation](https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App/blob/main/api)
 
-# :exclamation: Configuration [vercel.json](https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App/blob/main/vercel.json) file
+## :exclamation: Configuration [vercel.json](https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App/blob/main/vercel.json) file
   
 ### Build Command
 
