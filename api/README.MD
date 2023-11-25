@@ -3,7 +3,9 @@
 ## API Endpoints
 
 - `GET /api/products`: Fetches and returns the list of products.
+
 - `GET /api/openaiChat`: Endpoint for interacting with the chatbot.
+
 :exclamation: - `/api/(.*)`: All files with `/api` processing `index.js`, see [vercel.json](https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App/blob/main/vercel.json).
 
 ### `index.js`
