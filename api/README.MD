@@ -11,7 +11,7 @@ The central server file configures the Express app, applies middleware for CORS 
 
 ### `db.js`
 
-Provides the functionality to connect to the database and exposes the database client for use in other modules.
+Provides the functionality to connect to the database and exposes the database client for use in other modules. I choose mongodb as a database because I have already done one project and the use of this thing had a positive effect on reducing the time spent and simplifying access to the database for several people.
 
 ### `products.js`
 
@@ -19,7 +19,7 @@ Handles routes related to product retrieval from the database and serves the res
 
 ### `openaiChat.js` & `openaiFindCategory.js`
 
-These files integrate AI capabilities for chatting and category-based product searching using OpenAI's APIs.
+These files integrate AI capabilities for chatting and category-based product searching using OpenAI's APIs. For AI technologies I used OpenAI api, because I heard about new function [Assistant](https://platform.openai.com/docs/assistants/overview) that is very suitable for our project. In future I plan to improve this project to handle categories from products in this Assistant dynamicly.
 
 ## Acknowledgments
 
