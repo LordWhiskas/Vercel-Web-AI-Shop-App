@@ -9,16 +9,19 @@ function Home({ addToCart, selectedCategory, setSelectedCategory }) {
     const [infoMessage, setInfoMessage] = useState('');
     const ref = useRef(null);
 
+    // Filtering Products using selectedCategory
     const getFilteredProducts = () => {
         return selectedCategory === 'All' ? products : products.filter(product => product.category === selectedCategory);
     };
 
+    // Processing add to Cart button
     const handleAddToCart = (product) => {
         addToCart(product);
         setInfoMessage(`${product.name} has been added to your cart!`);
         setTimeout(() => setInfoMessage(''), 3000);
     };
 
+    // Getting products from database
     useEffect(() => {
         const fetchData = async () => {
             try {
