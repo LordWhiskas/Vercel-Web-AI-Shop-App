@@ -4,6 +4,7 @@
 
 - `GET /api/products`: Fetches and returns the list of products.
 - `GET /api/openaiChat`: Endpoint for interacting with the chatbot.
+- `/api/(.*)`: All files with `/api` processing `index.js`, see `[vercel.json](https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App/blob/main/vercel.json)`.
 
 ### `index.js`
 
@@ -19,7 +20,7 @@ Handles routes related to product retrieval from the database and serves the res
 
 ### `openaiChat.js` & `openaiFindCategory.js`
 
-These files integrate AI capabilities for chatting and category-based product searching using OpenAI's APIs. For AI technologies I used OpenAI api, because I heard about new function [Assistant](https://platform.openai.com/docs/assistants/overview) that is very suitable for our project. In future I plan to improve this project to handle categories from products in this Assistant dynamicly.
+These files integrate AI capabilities for chatting and category-based product searching using OpenAI's APIs. For AI technologies I used OpenAI api, because I heard about new function [Assistant](https://platform.openai.com/docs/assistants/overview) that is very suitable for our project. In future I plan to improve this project to handle categories from products in this Assistant dynamically.
 
 ## Acknowledgments
 
