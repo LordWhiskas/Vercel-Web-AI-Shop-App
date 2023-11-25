@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use('/products', productsHandler);
 
-app.use('/openaiChat', responseHandler);
+// app.use('/openaiChat', responseHandler);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
