@@ -14,7 +14,7 @@ const responseHandler = async (req, res) => {
         });
 
         const run = await openaiChat.beta.threads.runs.create(thread.id, {
-            assistant_id: "asst_4IjSi0qdqrSse3tD6PmjdDK9", // Use your assistant ID here
+            assistant_id: process.env.ASSISTANT_ID, // Use your assistant ID here
         });
 
         // Instead of while loop, use a recursive function with a timeout
