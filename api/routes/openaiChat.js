@@ -10,14 +10,14 @@ const responseHandler = async (req, res) => {
         const thread = await openaiChat.beta.threads.create();
         await openaiChat.beta.threads.messages.create(thread.id, {
             role: "user",
-            content: req.body.content // Assuming the message is sent in the body of the request
+            content: req.body.content
         });
 
         const run = await openaiChat.beta.threads.runs.create(thread.id, {
             assistant_id: process.env.ASSISTANT_ID, // Use your assistant ID here
         });
 
-        // Instead of while loop, use a recursive function with a timeout
+        // Recursive function for checking if Assistant have already processed our request
         const getRunResult = async (threadId, runId) => {
             const result = await openaiChat.beta.threads.runs.retrieve(threadId, runId);
             if (result.status === 'completed') {
@@ -33,7 +33,6 @@ const responseHandler = async (req, res) => {
 
         console.log(completedRun.body.data[0].content[0].text.value);
 
-        // Assuming the last message in the thread is the assistant's response
         const assistantMessage = completedRun.body.data[0].content[0].text.value;
 
         const findCategory = await responseCategory(assistantMessage);
