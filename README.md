@@ -67,5 +67,20 @@ npm run dev
 > - `source: "/(.*)"`: All other requests are rewritten to the root path.
 > - `destination: "/"`: Serves the `index.html` of the SPA, allowing client-side routing to handle the request.
 
+## Implementing Last-Minute Feature Changes
+
+Change management practices involve a systematic approach when introducing new features, especially last-minute ones:
+
+1. **Assess the Impact**: Analyze the new feature's impact on the current system.
+2. **Update the Project Plan**: Incorporate the new feature into the project's roadmap and documentation.
+3. **Communicate with Stakeholders**: Inform all affected parties about the change.
+4. **Branching Strategy**: Use version control to manage feature development in isolation.
+5. **Testing**: Implement comprehensive testing for the new feature.
+6. **Peer Review**: Conduct code reviews to maintain quality.
+7. **Continuous Integration**: Integrate the feature into the main branch regularly.
+8. **Rollback Plan**: Have a strategy in place for reverting changes if necessary.
+9. **Deployment**: Deploy the new feature carefully and monitor its performance.
+10. **Monitor and Adjust**: Be prepared to address any issues that arise post-deployment.
+
 Visit [localhost:3000](http://localhost:3000) for Client. <br/>
 Visit [localhost:8000](http://localhost:8000) for Backend.
