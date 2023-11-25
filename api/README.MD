@@ -8,21 +8,57 @@
 
 - :exclamation: `/api/(.*)`: All files with `/api` processing `index.js`, see [vercel.json](https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App/blob/main/vercel.json).
 
-### `index.js`
+This document provides an overview and detailed documentation of the server-side components for a Vercel hosted React application. Each server-side file contributes to the backend functionality, from handling database connections to responding to API requests.
 
-The central server file configures the Express app, applies middleware for CORS and JSON handling, and binds routes to their handlers.
+## `db.js` - Database Connection Module
 
-### `db.js`
+Handles the MongoDB database connection setup.
 
-Provides the functionality to connect to the database and exposes the database client for use in other modules. I choose mongodb as a database because I have already done one project and the use of this thing had a positive effect on reducing the time spent and simplifying access to the database for several people.
+### Features:
+- Loads environment variables for database connection.
+- Caches and exports a MongoDB database connection.
 
-### `products.js`
+## `index.js` - Server Entry Point
 
-Handles routes related to product retrieval from the database and serves the responses back to the client.
+The entry point for the server application, setting up the server and routing.
 
-### `openaiChat.js` & `openaiFindCategory.js`
+### Features:
+- Configures environment variables, server port, and initializes Express app.
+- Sets up CORS and JSON parsing middleware.
+- Defines API routes for products and chat interactions.
 
-These files integrate AI capabilities for chatting and category-based product searching using OpenAI's APIs. For AI technologies I used OpenAI api, because I heard about new function [Assistant](https://platform.openai.com/docs/assistants/overview) that is very suitable for our project. In future I plan to improve this project to handle categories from products in this Assistant dynamically.
+## `openaiChat.js` - OpenAI Chat Handler
+
+Manages chat interactions with OpenAI's API.
+
+### Features:
+- Initializes OpenAI API with credentials.
+- Handles chat message POST requests and processes OpenAI responses.
+- Exports a response handler for chat functionality.
+
+## `openaiFindCategory.js` - Category Identification Handler
+
+Identifies product categories from user input using OpenAI's API.
+
+### Features:
+- Configures OpenAI API settings.
+- Sends prompts to OpenAI and extracts categories.
+- Handles errors and rethrows for calling function to handle.
+
+## `products.js` - Products API Handler
+
+Manages retrieval of product data from the database.
+
+### Features:
+- Connects to the database and fetches product data.
+- Handles GET requests to `/api/products` and sends product data as JSON.
+- Exports a handler for product data retrieval.
+
+---
+
+# Additional Notes
+
+The server-side architecture is designed to support the functionality required for a shopping web application, handling data persistence, and client-server communication. The backend is built with modularity and scalability in mind, allowing for easy maintenance and expansion. This unified documentation should be updated alongside any changes or additions to the server-side codebase.
 
 ## Acknowledgments
 
