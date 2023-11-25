@@ -23,7 +23,7 @@ const products = [
 ];
 */
 
-import { connectToDatabase } from './db.js';
+import { connectToDatabase } from '../db.js';
 
 const productsHandler = async (req, res) => {
     const db = await connectToDatabase();
