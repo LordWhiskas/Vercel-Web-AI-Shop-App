@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Client-Side Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This document provides an overview and detailed documentation of the client-side components for a Vercel hosted React application. Each component plays a role in the overall functionality of the web application, from rendering the user interface to managing state and handling user interactions.
 
-## Available Scripts
+## :exclamation: [vercel.json](https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App/blob/main/vercel.json) file
+- ```"buildCommand"```: "cd client && npm install && npm run build",
+- ```"outputDirectory"```: "client/build",
+- ```
+  {
+    "source": "/(.*)", 
+    "destination": "/" - To resolve the error 404 on Vercel, we created this routing to fix routing.
+  }
+  ```
 
-In the project directory, you can run:
+## `App.js` - Root Component
 
-### `npm start`
+The `App.js` file is the entry point component, setting up routing and state management.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Features:
+- State management for cart items, chat messages, and selected product category.
+- Navigation bar with links to home, cart, and chat.
+- Routing for home, shopping cart, and chat pages.
+- API integration for chat responses.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Export:
+- Default export of `App` component.
 
-### `npm test`
+## `Cart.js` - Shopping Cart Component
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The `Cart.js` component displays the shopping cart and manages item removal.
 
-### `npm run build`
+### Features:
+- Displays cart items with the ability to remove them.
+- Calculates and displays the total price of cart items.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Export:
+- Default export of `Cart` component.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## `Chat.js` - Chat Component
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The `Chat.js` component provides a user interface for real-time chat interactions.
 
-### `npm run eject`
+### Features:
+- Sends and displays chat messages.
+- Interactive chat with category selection.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Export:
+- Default export of `Chat` component.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## `Home.js` - Home Page Component
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`Home.js` acts as the main page component, showcasing products and enabling user interactions.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Features:
+- Renders product listing with category-based filtering.
+- Integration with `ProductCard` for adding items to the shopping cart.
 
-## Learn More
+### Export:
+- Default export of `Home` component.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## `ProductCard.js` - Product Card Component
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`ProductCard.js` represents an individual product and allows users to add it to the cart.
 
-### Code Splitting
+### Features:
+- Displays product image, name, and price.
+- "Add to Cart" button functionality.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Export:
+- Default export of `ProductCard` component.
 
-### Analyzing the Bundle Size
+## `ShoppingCartPage.js` - Shopping Cart Page Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`ShoppingCartPage.js` sets up the shopping cart page layout.
 
-### Making a Progressive Web App
+### Features:
+- Container for the `Cart` component.
+- Displays a heading and renders the `Cart` with items.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Export:
+- Default export of `ShoppingCartPage` component.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Additional Notes
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Each component is designed to work cohesively within the React application. The components are modular and can be easily modified or extended for additional features. This documentation covers the current state of the components and should be updated as the application evolves.
